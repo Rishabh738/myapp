@@ -1,0 +1,38 @@
+<div class="container">
+    <h1 class="text-center text-primary">Update User</h1>
+    <%= link_to "BACK TO LIST", root_path ,:class=>"float-right pb-2" %>
+   
+      
+      <%= form_for(@user,:url => user_path(@user),:method => 'patch')do |f| %>
+          <table class="table">
+            <tr>
+              <th>Name</th>
+              <td><%= f.text_field(:name)%></td>
+            </tr>
+            <tr>
+              <th>Email</th>
+              <td><%= f.text_field(:email)%></td>
+            </tr>
+            <tr>
+              <th>Password</th>
+              <td><%= f.text_field(:password)%></td>
+            </tr>
+              <tr>
+              <th>Gender</th>
+              <%# <td>< f.text_field(:gender)></td> %>
+              <td>
+                <%= f.radio_button :gender, true  %> Male
+                <%= f.radio_button :gender, false %>Female
+              </td>
+            </tr>
+              <tr>
+              <th>Strength</th>
+              <td><%= f.text_field(:strength)%></td>
+            </tr>
+          </table>
+          <div class="float-right">
+            <%= f.submit("Update user" ,:class=> "btn btn-primary")%>
+          </div>
+      <%end%>
+    
+</div>   

@@ -1,0 +1,50 @@
+
+<div class="container">
+
+    <h1 class="text-center text-primary"> All Users </h1>
+
+        <div class="text-right pb-2">
+            <%= link_to 'Add new User', new_user_path , :class=>"btn btn-primary"%>
+        </div>
+
+        <div class="text-center">
+            <table class="table"> 
+                <thead class="thead-dark">
+                    <tr>
+                        <th>S.no</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Strength</th>
+                        <th>Action</th>
+                    </tr>
+                        <% @users.each do |u|%>
+    
+                    <tr>
+                </thead> 
+                        <td><%= u.id %></td>
+                        <td><%= u.name %></td>
+                        <td><%= u.email%></td>
+                        <td>
+                            <% if u.gender == true %>
+                            <%="Male"%>
+                            <% else %>
+                            <%= "Female"%>
+                            <%end%>   
+                        </td>
+                        <td><%= u.strength%></td>
+     
+                        <td>
+                        
+                            <%=link_to "Edit", edit_user_path(u.id) , :class=> "btn btn-primary"%>
+                            <%=link_to "Delete",user_path(u.id), :method => :delete, :class=> "btn btn-primary" ,  :data => {:confirm => 'Are you sure you want to delete it?'} %> 
+                                
+                            <%# <%=link_to "Delete", delete_user_path(u.id)%> 
+
+                    
+                        </td>
+                    </tr>
+                        <%end%>
+            </table>
+        </div>
+</div>
